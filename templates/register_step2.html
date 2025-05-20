@@ -1,7 +1,7 @@
 {% extends "layout.html" %} {% block content %}
 <div class="form-container">
   <h1>Complete Your Profile</h1>
-  <form method="POST" action="{{ url_for('registerS2') }}">
+  <form method="POST" action="{{ url_for('register_step2') }}">
     {{ form.hidden_tag() }}
     <div class="form-group">
       {{ form.full_name.label(class="form-label") }} {% if form.full_name.errors
