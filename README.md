@@ -1,4 +1,4 @@
-list ofimprovements:
+List of improvements:
 
 Add to/remove username and pasword validators
 
