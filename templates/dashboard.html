@@ -1,0 +1,72 @@
+<!-- {% extends "layout.html" %} {% block content %}
+<div class="form-container" style="max-width: 700px">
+  <div class="card">
+    <div class="card-header">
+      <h2 class="my-2">Dashboard</h2>
+    </div>
+    <div class="card-body">
+      <h3 class="card-title">Welcome, {{ user.username }}!</h3>
+      <div class="alert alert-success">
+        You have successfully logged in to your account.
+      </div>
+      <p>Your account details:</p>
+      <ul class="list-group mb-4">
+        <li class="list-group-item">
+          <strong>Username:</strong> {{ user.username }}
+        </li>
+        <li class="list-group-item">
+          <strong>Account ID:</strong> {{ user.id }}
+        </li>
+      </ul>
+      <div class="d-flex justify-content-between">
+        <a href="#" class="btn btn-outline-primary">Account Settings</a>
+        <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %} -->
+
+{% extends "layout.html" %} {% block content %}
+<div class="form-container" style="max-width: 700px">
+  <div class="card">
+    <div class="card-header">
+      <h2 class="my-2">Dashboard</h2>
+    </div>
+    <div class="card-body">
+      <h3 class="card-title">Welcome, {{ user.full_name }}!</h3>
+      <div class="alert alert-success">
+        You have successfully logged in to your account.
+      </div>
+      <p>Your account details:</p>
+      <ul class="list-group mb-4">
+        <li class="list-group-item">
+          <strong>Username:</strong> {{ user.username }}
+        </li>
+        <li class="list-group-item">
+          <strong>Email:</strong> {{ user.email }}
+        </li>
+        <li class="list-group-item">
+          <strong>Full Name:</strong> {{ user.full_name }}
+        </li>
+        <li class="list-group-item">
+          <strong>Date of Birth:</strong> {{ user.date_of_birth.strftime('%B %d,
+          %Y') if user.date_of_birth }}
+        </li>
+        <li class="list-group-item">
+          <strong>Phone:</strong> {{ user.phone }}
+        </li>
+        {% if user.address %}
+        <li class="list-group-item">
+          <strong>Address:</strong> {{ user.address }}
+        </li>
+        {% endif %}
+      </ul>
+      <div class="d-flex justify-content-between">
+        <a href="#" class="btn btn-outline-primary">Account Settings</a>
+        <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

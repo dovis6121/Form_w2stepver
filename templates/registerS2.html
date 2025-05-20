@@ -1,0 +1,60 @@
+{% extends "layout.html" %} {% block content %}
+<div class="form-container">
+  <h1>Complete Your Profile</h1>
+  <form method="POST" action="{{ url_for('registerS2') }}">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+      {{ form.full_name.label(class="form-label") }} {% if form.full_name.errors
+      %} {{ form.full_name(class="form-control is-invalid") }}
+      <div class="invalid-feedback">
+        {% for error in form.full_name.errors %}
+        <span>{{ error }}</span>
+        {% endfor %}
+      </div>
+      {% else %} {{ form.full_name(class="form-control") }} {% endif %}
+    </div>
+    <div class="form-group">
+      {{ form.date_of_birth.label(class="form-label") }}
+      <small class="text-muted">Format: YYYY-MM-DD</small>
+      {% if form.date_of_birth.errors %} {{
+      form.date_of_birth(class="form-control is-invalid",
+      placeholder="YYYY-MM-DD") }}
+      <div class="invalid-feedback">
+        {% for error in form.date_of_birth.errors %}
+        <span>{{ error }}</span>
+        {% endfor %}
+      </div>
+      {% else %} {{ form.date_of_birth(class="form-control",
+      placeholder="YYYY-MM-DD") }} {% endif %}
+    </div>
+    <div class="form-group">
+      {{ form.phone.label(class="form-label") }} {% if form.phone.errors %} {{
+      form.phone(class="form-control is-invalid") }}
+      <div class="invalid-feedback">
+        {% for error in form.phone.errors %}
+        <span>{{ error }}</span>
+        {% endfor %}
+      </div>
+      {% else %} {{ form.phone(class="form-control") }} {% endif %}
+    </div>
+    <div class="form-group">
+      {{ form.address.label(class="form-label") }}
+      <small class="text-muted">Optional</small>
+      {% if form.address.errors %} {{ form.address(class="form-control
+      is-invalid") }}
+      <div class="invalid-feedback">
+        {% for error in form.address.errors %}
+        <span>{{ error }}</span>
+        {% endfor %}
+      </div>
+      {% else %} {{ form.address(class="form-control") }} {% endif %}
+    </div>
+    <div class="form-group">
+      {{ form.submit(class="btn btn-success btn-submit") }}
+    </div>
+  </form>
+  <div class="login-links">
+    <p><a href="{{ url_for('register') }}">Go back to step 1</a></p>
+  </div>
+</div>
+{% endblock content %}
